@@ -62,8 +62,29 @@ namespace Week1Challenges
                 Console.WriteLine("Oh man, get some sleep!");
             }
 
-            int dayGrade = 2;
+            string dayGrade = "Great";
 
+            switch (dayGrade)
+            {
+                case "Great":
+                    Console.WriteLine("That is Amazing!");
+                    break;
+
+                case "Good":
+                    Console.WriteLine("I'm glad to hear that!");
+                    break;
+                case "Okay":
+                    Console.WriteLine("Could always be worse!");
+                    break;
+                case "Bad":
+                    Console.WriteLine("I'm sorry to hear that!");
+                    break;
+                case ":(":
+                    Console.WriteLine("You need a drink!");
+                    break;
+
+
+            }
         }
         
     }
