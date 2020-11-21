@@ -64,7 +64,7 @@ namespace _06_RepositoryPattern_Repository
                 return false;
             }
         }
-        //Helper Method
+        // GetByTitle
         public StreamingContent GetContentByTitle(string title)
         {
             foreach (StreamingContent content in _listOfContent)
@@ -77,4 +77,6 @@ namespace _06_RepositoryPattern_Repository
             return null;
         }
     }
+
+
 }
