@@ -46,7 +46,7 @@ namespace ToolBoxDemo
             
             }
             void KeyToContinueWithClearConsole(){
-
+                                         
                 KeyToContinue();
                 ClearConsole();
             }
