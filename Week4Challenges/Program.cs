@@ -10,6 +10,20 @@ namespace Week4Challenges
     {
         static void Main(string[] args)
         {
+            var footballTeam = new FootBall();
+            var basketballTeam = new Basketball();
+            var sportList = new List<Sport>();
+            sportList.Add(footballTeam);
+            sportList.Add(basketballTeam);
+            foreach(var team in sportList)
+            {
+                Console.WriteLine($"Number of players per team: {team.PlayersPerTeam} \n" +
+                    $"Location Played : {team.LocationOfPlay}.");
+            }
+            int basketballScore = 95;
+            int footballScore = 21;
+            Console.WriteLine($"The score is 95,95. Steph drains the three. The new score is {basketballTeam.addPoints(basketballScore, "threepointer" )} to 95!");
+            Console.WriteLine($"Colts score after a touchdown is {footballTeam.addPoints(footballScore, "touchdown")}!");
         }
     }
     abstract class Sport
