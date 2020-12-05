@@ -77,47 +77,53 @@ namespace _06_RepositoryPattern_Console
             StreamingContent newContent = new StreamingContent();
 
             //Title
+            
             Console.WriteLine("Enter the title for the content:");
             newContent.Title = Console.ReadLine();
-
-            //Description
-            Console.WriteLine("Enter the description for the content:");
-            newContent.Description = Console.ReadLine();
-            //Maturity Rating
-            Console.WriteLine("Enter the rating for the content (G, PG, PG-13, etc):");
-            newContent.MaturityRating = Console.ReadLine();
-            //Star Rating
-            Console.WriteLine("Enter the star count for the content:");
-            string starsAsString = Console.ReadLine();
-            newContent.StarRating = double.Parse(starsAsString);
-            //IsFamilyFriendly
-            Console.WriteLine("Is this content family friendly? (y/n)");
-            string familyFriendlyString = Console.ReadLine().ToLower();
-
-            if (familyFriendlyString == "y")
+            if (_contentRepo.GetContentByTitle(newContent.Title.ToLower()) == null)
             {
-                newContent.IsFamilyFriendly = true;
+                //Description
+                Console.WriteLine("Enter the description for the content:");
+                newContent.Description = Console.ReadLine();
+                //Maturity Rating
+                Console.WriteLine("Enter the rating for the content (G, PG, PG-13, etc):");
+                newContent.MaturityRating = Console.ReadLine();
+                //Star Rating
+                Console.WriteLine("Enter the star count for the content:");
+                string starsAsString = Console.ReadLine();
+                newContent.StarRating = double.Parse(starsAsString);
+                //IsFamilyFriendly
+                Console.WriteLine("Is this content family friendly? (y/n)");
+                string familyFriendlyString = Console.ReadLine().ToLower();
+
+                if (familyFriendlyString == "y")
+                {
+                    newContent.IsFamilyFriendly = true;
+                }
+                else
+                {
+                    newContent.IsFamilyFriendly = false;
+                }
+
+                //GenreType
+                Console.WriteLine("Enter the Genre Number:\n" +
+                    "1. Horror\n" +
+                    "2. RomCom\n" +
+                    "3. SciFi\n" +
+                    "4. Documentary\n" +
+                    "5. Bromance\n" +
+                    "6. Drama\n" +
+                    "7. Action");
+                string genreAsString = Console.ReadLine();
+                int genreAsInt = int.Parse(genreAsString);
+                newContent.TypeOfGenre = (GenreType)genreAsInt;
+
+                _contentRepo.AddContentToList(newContent);
             }
             else
             {
-                newContent.IsFamilyFriendly = false;
+                Console.WriteLine("Already in there dinglebat");
             }
-
-            //GenreType
-            Console.WriteLine("Enter the Genre Number:\n" +
-                "1. Horror\n" +
-                "2. RomCom\n" +
-                "3. SciFi\n" +
-                "4. Documentary\n" +
-                "5. Bromance\n" +
-                "6. Drama\n" +
-                "7. Action");
-            string genreAsString = Console.ReadLine();
-            int genreAsInt = int.Parse(genreAsString);
-            newContent.TypeOfGenre = (GenreType)genreAsInt;
-
-            _contentRepo.AddContentToList(newContent);
-
         }
 
         //View Current StreamingContent that is saved
